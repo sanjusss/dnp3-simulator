@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.40629.0
+# Visual Studio Version 17
+VisualStudioVersion = 17.13.35931.197
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "simulator", "simulator", "{3E6996FF-807F-4F9D-8C72-932EE398B6A1}"
 EndProject
@@ -24,6 +24,13 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DNP3Module", "Simulator\DNP3\DNP3Simulator\DNP3Module.csproj", "{2EDBD258-1A19-4527-9C92-7418191BEE87}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Simulator", "Simulator\Simulator\Simulator.csproj", "{9850AA24-6847-4611-81DA-6F04F92B3400}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "解决方案项", "解决方案项", "{9FA3D6BD-1EC1-3BA5-80CB-CE02773A58D5}"
+	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
+	EndProjectSection
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "OpenSSL", "OpenSSL\OpenSSL.shproj", "{74DBFF5D-A894-416C-B1ED-784F4FDEFF80}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -120,5 +127,12 @@ Global
 		{BF90D749-22FB-49FD-B840-4FF875D12CC6} = {3FFDA7A5-5925-4644-9B43-9C118DA6FFE5}
 		{2EDBD258-1A19-4527-9C92-7418191BEE87} = {3FFDA7A5-5925-4644-9B43-9C118DA6FFE5}
 		{9850AA24-6847-4611-81DA-6F04F92B3400} = {3E6996FF-807F-4F9D-8C72-932EE398B6A1}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {77FDB65F-A097-4670-9C03-B15F45209EB1}
+	EndGlobalSection
+	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		OpenSSL\OpenSSL.projitems*{74dbff5d-a894-416c-b1ed-784f4fdeff80}*SharedItemsImports = 13
+		OpenSSL\OpenSSL.projitems*{9850aa24-6847-4611-81da-6f04f92b3400}*SharedItemsImports = 4
 	EndGlobalSection
 EndGlobal
