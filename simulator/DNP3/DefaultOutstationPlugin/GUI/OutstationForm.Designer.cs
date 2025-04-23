@@ -74,8 +74,8 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.splitContainer2);
-            this.splitContainer1.Size = new System.Drawing.Size(1141, 563);
-            this.splitContainer1.SplitterDistance = 260;
+            this.splitContainer1.Size = new System.Drawing.Size(1204, 566);
+            this.splitContainer1.SplitterDistance = 274;
             this.splitContainer1.TabIndex = 1;
             // 
             // listBoxEvents
@@ -84,18 +84,19 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.listBoxEvents.FormattingEnabled = true;
-            this.listBoxEvents.Location = new System.Drawing.Point(8, 209);
+            this.listBoxEvents.ItemHeight = 12;
+            this.listBoxEvents.Location = new System.Drawing.Point(8, 193);
             this.listBoxEvents.Name = "listBoxEvents";
-            this.listBoxEvents.Size = new System.Drawing.Size(244, 342);
+            this.listBoxEvents.Size = new System.Drawing.Size(258, 352);
             this.listBoxEvents.TabIndex = 0;
             // 
             // buttonClear
             // 
             this.buttonClear.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonClear.Location = new System.Drawing.Point(5, 137);
+            this.buttonClear.Location = new System.Drawing.Point(5, 126);
             this.buttonClear.Name = "buttonClear";
-            this.buttonClear.Size = new System.Drawing.Size(247, 38);
+            this.buttonClear.Size = new System.Drawing.Size(261, 35);
             this.buttonClear.TabIndex = 3;
             this.buttonClear.Text = "Clear Events";
             this.buttonClear.UseVisualStyleBackColor = true;
@@ -105,9 +106,9 @@
             // 
             this.buttonApply.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonApply.Location = new System.Drawing.Point(5, 93);
+            this.buttonApply.Location = new System.Drawing.Point(5, 86);
             this.buttonApply.Name = "buttonApply";
-            this.buttonApply.Size = new System.Drawing.Size(247, 38);
+            this.buttonApply.Size = new System.Drawing.Size(261, 35);
             this.buttonApply.TabIndex = 2;
             this.buttonApply.Text = "Apply Events";
             this.buttonApply.UseVisualStyleBackColor = true;
@@ -117,9 +118,9 @@
             // 
             this.buttonEdit.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonEdit.Location = new System.Drawing.Point(5, 49);
+            this.buttonEdit.Location = new System.Drawing.Point(5, 45);
             this.buttonEdit.Name = "buttonEdit";
-            this.buttonEdit.Size = new System.Drawing.Size(247, 38);
+            this.buttonEdit.Size = new System.Drawing.Size(261, 35);
             this.buttonEdit.TabIndex = 1;
             this.buttonEdit.Text = "Edit Selection";
             this.buttonEdit.UseVisualStyleBackColor = true;
@@ -133,7 +134,7 @@
             this.comboBoxTypes.FormattingEnabled = true;
             this.comboBoxTypes.Location = new System.Drawing.Point(5, 5);
             this.comboBoxTypes.Name = "comboBoxTypes";
-            this.comboBoxTypes.Size = new System.Drawing.Size(247, 21);
+            this.comboBoxTypes.Size = new System.Drawing.Size(261, 20);
             this.comboBoxTypes.TabIndex = 0;
             this.comboBoxTypes.SelectedIndexChanged += new System.EventHandler(this.comboBoxTypes_SelectedIndexChanged);
             // 
@@ -152,31 +153,35 @@
             // 
             this.splitContainer2.Panel2.Controls.Add(this.groupBox1);
             this.splitContainer2.Panel2.Controls.Add(this.commandHandlerControl1);
-            this.splitContainer2.Size = new System.Drawing.Size(877, 563);
+            this.splitContainer2.Size = new System.Drawing.Size(926, 566);
             this.splitContainer2.SplitterDistance = 268;
             this.splitContainer2.TabIndex = 0;
             // 
             // measurementView
             // 
             this.measurementView.AllowSelection = true;
-            this.measurementView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.measurementView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.measurementView.Location = new System.Drawing.Point(0, 0);
             this.measurementView.Name = "measurementView";
-            this.measurementView.Size = new System.Drawing.Size(877, 268);
+            this.measurementView.Size = new System.Drawing.Size(923, 265);
             this.measurementView.TabIndex = 3;
             this.measurementView.OnRowSelectionChanged += new Automatak.Simulator.DNP3.Commons.MeasurementView.RowSelectionEvent(this.measurementView_OnRowSelectionChanged);
             // 
             // groupBox1
             // 
+            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.comboBoxColdRestartMode);
             this.groupBox1.Controls.Add(this.numericUpDownColdRestartTime);
             this.groupBox1.Controls.Add(this.checkBoxLocalMode);
             this.groupBox1.Controls.Add(this.checkBoxNeedTime);
-            this.groupBox1.Location = new System.Drawing.Point(21, 13);
+            this.groupBox1.Location = new System.Drawing.Point(21, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(163, 265);
+            this.groupBox1.Size = new System.Drawing.Size(205, 245);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Simulated Behavior";
@@ -184,18 +189,18 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(20, 148);
+            this.label2.Location = new System.Drawing.Point(20, 137);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(95, 13);
+            this.label2.Size = new System.Drawing.Size(113, 12);
             this.label2.TabIndex = 6;
             this.label2.Text = "Cold Restart Delay";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(20, 94);
+            this.label1.Location = new System.Drawing.Point(20, 87);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(95, 13);
+            this.label1.Size = new System.Drawing.Size(107, 12);
             this.label1.TabIndex = 5;
             this.label1.Text = "Cold Restart Mode";
             // 
@@ -204,7 +209,7 @@
             this.comboBoxColdRestartMode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxColdRestartMode.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBoxColdRestartMode.FormattingEnabled = true;
-            this.comboBoxColdRestartMode.Location = new System.Drawing.Point(18, 113);
+            this.comboBoxColdRestartMode.Location = new System.Drawing.Point(18, 104);
             this.comboBoxColdRestartMode.Name = "comboBoxColdRestartMode";
             this.comboBoxColdRestartMode.Size = new System.Drawing.Size(131, 17);
             this.comboBoxColdRestartMode.TabIndex = 4;
@@ -212,23 +217,23 @@
             // 
             // numericUpDownColdRestartTime
             // 
-            this.numericUpDownColdRestartTime.Location = new System.Drawing.Point(18, 164);
+            this.numericUpDownColdRestartTime.Location = new System.Drawing.Point(18, 151);
             this.numericUpDownColdRestartTime.Maximum = new decimal(new int[] {
             65535,
             0,
             0,
             0});
             this.numericUpDownColdRestartTime.Name = "numericUpDownColdRestartTime";
-            this.numericUpDownColdRestartTime.Size = new System.Drawing.Size(131, 20);
+            this.numericUpDownColdRestartTime.Size = new System.Drawing.Size(131, 21);
             this.numericUpDownColdRestartTime.TabIndex = 3;
             this.numericUpDownColdRestartTime.ValueChanged += new System.EventHandler(this.numericUpDownColdRestartTime_ValueChanged);
             // 
             // checkBoxLocalMode
             // 
             this.checkBoxLocalMode.AutoSize = true;
-            this.checkBoxLocalMode.Location = new System.Drawing.Point(20, 58);
+            this.checkBoxLocalMode.Location = new System.Drawing.Point(20, 54);
             this.checkBoxLocalMode.Name = "checkBoxLocalMode";
-            this.checkBoxLocalMode.Size = new System.Drawing.Size(129, 17);
+            this.checkBoxLocalMode.Size = new System.Drawing.Size(162, 16);
             this.checkBoxLocalMode.TabIndex = 1;
             this.checkBoxLocalMode.Text = "Local Control (IIN 1.5)";
             this.checkBoxLocalMode.UseVisualStyleBackColor = true;
@@ -237,9 +242,9 @@
             // checkBoxNeedTime
             // 
             this.checkBoxNeedTime.AutoSize = true;
-            this.checkBoxNeedTime.Location = new System.Drawing.Point(20, 35);
+            this.checkBoxNeedTime.Location = new System.Drawing.Point(20, 32);
             this.checkBoxNeedTime.Name = "checkBoxNeedTime";
-            this.checkBoxNeedTime.Size = new System.Drawing.Size(119, 17);
+            this.checkBoxNeedTime.Size = new System.Drawing.Size(138, 16);
             this.checkBoxNeedTime.TabIndex = 0;
             this.checkBoxNeedTime.Text = "Need Time (IIN 1.4)";
             this.checkBoxNeedTime.UseVisualStyleBackColor = true;
@@ -247,23 +252,25 @@
             // 
             // commandHandlerControl1
             // 
-            this.commandHandlerControl1.Location = new System.Drawing.Point(190, 2);
+            this.commandHandlerControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.commandHandlerControl1.Location = new System.Drawing.Point(229, 3);
             this.commandHandlerControl1.Name = "commandHandlerControl1";
-            this.commandHandlerControl1.Size = new System.Drawing.Size(694, 316);
+            this.commandHandlerControl1.Size = new System.Drawing.Size(694, 292);
             this.commandHandlerControl1.TabIndex = 0;
             // 
             // OutstationForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1141, 563);
+            this.ClientSize = new System.Drawing.Size(1204, 566);
             this.Controls.Add(this.splitContainer1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "OutstationForm";
             this.ShowIcon = false;
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Outstation";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.GUIMasterForm_FormClosing);
             this.splitContainer1.Panel1.ResumeLayout(false);

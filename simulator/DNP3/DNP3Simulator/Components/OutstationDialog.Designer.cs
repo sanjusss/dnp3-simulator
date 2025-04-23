@@ -29,7 +29,6 @@ namespace Automatak.Simulator.DNP3.Components
         /// </summary>
         private void InitializeComponent()
         {
-            Automatak.DNP3.Interface.LinkConfig linkConfig1 = new Automatak.DNP3.Interface.LinkConfig();
             this.groupBoxButtons = new System.Windows.Forms.GroupBox();
             this.label3 = new System.Windows.Forms.Label();
             this.buttonAdd = new System.Windows.Forms.Button();
@@ -81,31 +80,35 @@ namespace Automatak.Simulator.DNP3.Components
             // 
             // groupBoxButtons
             // 
+            this.groupBoxButtons.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBoxButtons.Controls.Add(this.label3);
             this.groupBoxButtons.Controls.Add(this.buttonAdd);
             this.groupBoxButtons.Controls.Add(this.textBoxID);
-            this.groupBoxButtons.Location = new System.Drawing.Point(12, 357);
+            this.groupBoxButtons.Location = new System.Drawing.Point(12, 472);
             this.groupBoxButtons.Name = "groupBoxButtons";
-            this.groupBoxButtons.Size = new System.Drawing.Size(558, 71);
+            this.groupBoxButtons.Size = new System.Drawing.Size(912, 66);
             this.groupBoxButtons.TabIndex = 0;
             this.groupBoxButtons.TabStop = false;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(118, 34);
+            this.label3.Location = new System.Drawing.Point(118, 31);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(29, 13);
+            this.label3.Size = new System.Drawing.Size(35, 12);
             this.label3.TabIndex = 5;
             this.label3.Text = "Alias";
             // 
             // buttonAdd
             // 
+            this.buttonAdd.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.buttonAdd.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonAdd.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonAdd.Location = new System.Drawing.Point(307, 19);
+            this.buttonAdd.Location = new System.Drawing.Point(307, 18);
             this.buttonAdd.Name = "buttonAdd";
-            this.buttonAdd.Size = new System.Drawing.Size(238, 42);
+            this.buttonAdd.Size = new System.Drawing.Size(238, 39);
             this.buttonAdd.TabIndex = 0;
             this.buttonAdd.Text = "Add";
             this.buttonAdd.UseVisualStyleBackColor = true;
@@ -113,9 +116,11 @@ namespace Automatak.Simulator.DNP3.Components
             // 
             // textBoxID
             // 
-            this.textBoxID.Location = new System.Drawing.Point(24, 31);
+            this.textBoxID.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.textBoxID.Location = new System.Drawing.Point(24, 29);
             this.textBoxID.Name = "textBoxID";
-            this.textBoxID.Size = new System.Drawing.Size(88, 20);
+            this.textBoxID.Size = new System.Drawing.Size(88, 21);
             this.textBoxID.TabIndex = 4;
             this.textBoxID.Text = "outstation";
             // 
@@ -123,9 +128,9 @@ namespace Automatak.Simulator.DNP3.Components
             // 
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusLabel1});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 432);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 539);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(581, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(935, 22);
             this.statusStrip1.SizingGrip = false;
             this.statusStrip1.TabIndex = 5;
             // 
@@ -137,14 +142,17 @@ namespace Automatak.Simulator.DNP3.Components
             // 
             // tabControl1
             // 
+            this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Controls.Add(this.tabPage4);
-            this.tabControl1.Location = new System.Drawing.Point(12, 12);
+            this.tabControl1.Location = new System.Drawing.Point(12, 11);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(558, 267);
+            this.tabControl1.Size = new System.Drawing.Size(912, 388);
             this.tabControl1.TabIndex = 7;
             // 
             // tabPage1
@@ -153,17 +161,19 @@ namespace Automatak.Simulator.DNP3.Components
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(550, 241);
+            this.tabPage1.Size = new System.Drawing.Size(904, 362);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Link";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
             // linkConfigControl
             // 
-            this.linkConfigControl.Configuration = linkConfig1;
+            this.linkConfigControl.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.linkConfigControl.Location = new System.Drawing.Point(6, 6);
             this.linkConfigControl.Name = "linkConfigControl";
-            this.linkConfigControl.Size = new System.Drawing.Size(462, 222);
+            this.linkConfigControl.Size = new System.Drawing.Size(892, 350);
             this.linkConfigControl.TabIndex = 6;
             // 
             // tabPage2
@@ -185,30 +195,33 @@ namespace Automatak.Simulator.DNP3.Components
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(550, 241);
+            this.tabPage2.Size = new System.Drawing.Size(904, 362);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Outstation";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
             // eventBufferConfigControl1
             // 
-            this.eventBufferConfigControl1.Location = new System.Drawing.Point(280, 27);
+            this.eventBufferConfigControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.eventBufferConfigControl1.Location = new System.Drawing.Point(301, 25);
             this.eventBufferConfigControl1.Name = "eventBufferConfigControl1";
-            this.eventBufferConfigControl1.Size = new System.Drawing.Size(258, 208);
+            this.eventBufferConfigControl1.Size = new System.Drawing.Size(597, 331);
             this.eventBufferConfigControl1.TabIndex = 14;
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(98, 187);
+            this.label8.Location = new System.Drawing.Point(98, 173);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(130, 13);
+            this.label8.Size = new System.Drawing.Size(149, 12);
             this.label8.TabIndex = 13;
             this.label8.Text = "Max Controls Per Request";
             // 
             // numericUpDownMaxControls
             // 
-            this.numericUpDownMaxControls.Location = new System.Drawing.Point(20, 184);
+            this.numericUpDownMaxControls.Location = new System.Drawing.Point(20, 170);
             this.numericUpDownMaxControls.Maximum = new decimal(new int[] {
             16,
             0,
@@ -220,7 +233,7 @@ namespace Automatak.Simulator.DNP3.Components
             0,
             0});
             this.numericUpDownMaxControls.Name = "numericUpDownMaxControls";
-            this.numericUpDownMaxControls.Size = new System.Drawing.Size(70, 20);
+            this.numericUpDownMaxControls.Size = new System.Drawing.Size(70, 21);
             this.numericUpDownMaxControls.TabIndex = 12;
             this.numericUpDownMaxControls.Value = new decimal(new int[] {
             1,
@@ -231,15 +244,15 @@ namespace Automatak.Simulator.DNP3.Components
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(98, 135);
+            this.label7.Location = new System.Drawing.Point(98, 125);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(104, 13);
+            this.label7.Size = new System.Drawing.Size(125, 12);
             this.label7.TabIndex = 11;
             this.label7.Text = "Select TImeout  (ms)";
             // 
             // numericUpDownSelectTimeout
             // 
-            this.numericUpDownSelectTimeout.Location = new System.Drawing.Point(20, 132);
+            this.numericUpDownSelectTimeout.Location = new System.Drawing.Point(20, 122);
             this.numericUpDownSelectTimeout.Maximum = new decimal(new int[] {
             120000,
             0,
@@ -251,7 +264,7 @@ namespace Automatak.Simulator.DNP3.Components
             0,
             0});
             this.numericUpDownSelectTimeout.Name = "numericUpDownSelectTimeout";
-            this.numericUpDownSelectTimeout.Size = new System.Drawing.Size(70, 20);
+            this.numericUpDownSelectTimeout.Size = new System.Drawing.Size(70, 21);
             this.numericUpDownSelectTimeout.TabIndex = 9;
             this.numericUpDownSelectTimeout.Value = new decimal(new int[] {
             5000,
@@ -262,15 +275,15 @@ namespace Automatak.Simulator.DNP3.Components
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(98, 161);
+            this.label5.Location = new System.Drawing.Point(98, 149);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(112, 13);
+            this.label5.Size = new System.Drawing.Size(125, 12);
             this.label5.TabIndex = 8;
             this.label5.Text = "Max Tx Fragment Size";
             // 
             // numericUpDownMaxTxFrag
             // 
-            this.numericUpDownMaxTxFrag.Location = new System.Drawing.Point(20, 158);
+            this.numericUpDownMaxTxFrag.Location = new System.Drawing.Point(20, 146);
             this.numericUpDownMaxTxFrag.Maximum = new decimal(new int[] {
             2048,
             0,
@@ -282,7 +295,7 @@ namespace Automatak.Simulator.DNP3.Components
             0,
             0});
             this.numericUpDownMaxTxFrag.Name = "numericUpDownMaxTxFrag";
-            this.numericUpDownMaxTxFrag.Size = new System.Drawing.Size(70, 20);
+            this.numericUpDownMaxTxFrag.Size = new System.Drawing.Size(70, 21);
             this.numericUpDownMaxTxFrag.TabIndex = 7;
             this.numericUpDownMaxTxFrag.Value = new decimal(new int[] {
             2048,
@@ -293,15 +306,15 @@ namespace Automatak.Simulator.DNP3.Components
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(98, 108);
+            this.label4.Location = new System.Drawing.Point(98, 100);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(142, 13);
+            this.label4.Size = new System.Drawing.Size(179, 12);
             this.label4.TabIndex = 6;
             this.label4.Text = "Unsolicited Retry Period (ms)";
             // 
             // numericUpDownUnsolicitedRetry
             // 
-            this.numericUpDownUnsolicitedRetry.Location = new System.Drawing.Point(20, 104);
+            this.numericUpDownUnsolicitedRetry.Location = new System.Drawing.Point(20, 96);
             this.numericUpDownUnsolicitedRetry.Maximum = new decimal(new int[] {
             120000,
             0,
@@ -313,7 +326,7 @@ namespace Automatak.Simulator.DNP3.Components
             0,
             0});
             this.numericUpDownUnsolicitedRetry.Name = "numericUpDownUnsolicitedRetry";
-            this.numericUpDownUnsolicitedRetry.Size = new System.Drawing.Size(70, 20);
+            this.numericUpDownUnsolicitedRetry.Size = new System.Drawing.Size(70, 21);
             this.numericUpDownUnsolicitedRetry.TabIndex = 5;
             this.numericUpDownUnsolicitedRetry.Value = new decimal(new int[] {
             5000,
@@ -324,15 +337,15 @@ namespace Automatak.Simulator.DNP3.Components
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(98, 82);
+            this.label2.Location = new System.Drawing.Point(98, 76);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(160, 13);
+            this.label2.Size = new System.Drawing.Size(197, 12);
             this.label2.TabIndex = 4;
             this.label2.Text = "Unsolicited Confirm Timeout (ms)";
             // 
             // numericUpDownUnsolConfirmTimeout
             // 
-            this.numericUpDownUnsolConfirmTimeout.Location = new System.Drawing.Point(20, 78);
+            this.numericUpDownUnsolConfirmTimeout.Location = new System.Drawing.Point(20, 72);
             this.numericUpDownUnsolConfirmTimeout.Maximum = new decimal(new int[] {
             120000,
             0,
@@ -344,7 +357,7 @@ namespace Automatak.Simulator.DNP3.Components
             0,
             0});
             this.numericUpDownUnsolConfirmTimeout.Name = "numericUpDownUnsolConfirmTimeout";
-            this.numericUpDownUnsolConfirmTimeout.Size = new System.Drawing.Size(70, 20);
+            this.numericUpDownUnsolConfirmTimeout.Size = new System.Drawing.Size(70, 21);
             this.numericUpDownUnsolConfirmTimeout.TabIndex = 3;
             this.numericUpDownUnsolConfirmTimeout.Value = new decimal(new int[] {
             5000,
@@ -355,15 +368,15 @@ namespace Automatak.Simulator.DNP3.Components
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(98, 56);
+            this.label1.Location = new System.Drawing.Point(98, 52);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(148, 13);
+            this.label1.Size = new System.Drawing.Size(185, 12);
             this.label1.TabIndex = 2;
             this.label1.Text = "Solicited Confirm Timeout (ms)";
             // 
             // numericUpDownSolConfirmTimeout
             // 
-            this.numericUpDownSolConfirmTimeout.Location = new System.Drawing.Point(20, 52);
+            this.numericUpDownSolConfirmTimeout.Location = new System.Drawing.Point(20, 48);
             this.numericUpDownSolConfirmTimeout.Maximum = new decimal(new int[] {
             120000,
             0,
@@ -375,7 +388,7 @@ namespace Automatak.Simulator.DNP3.Components
             0,
             0});
             this.numericUpDownSolConfirmTimeout.Name = "numericUpDownSolConfirmTimeout";
-            this.numericUpDownSolConfirmTimeout.Size = new System.Drawing.Size(70, 20);
+            this.numericUpDownSolConfirmTimeout.Size = new System.Drawing.Size(70, 21);
             this.numericUpDownSolConfirmTimeout.TabIndex = 1;
             this.numericUpDownSolConfirmTimeout.Value = new decimal(new int[] {
             5000,
@@ -388,9 +401,9 @@ namespace Automatak.Simulator.DNP3.Components
             this.checkBoxEnableUnsol.AutoSize = true;
             this.checkBoxEnableUnsol.Checked = true;
             this.checkBoxEnableUnsol.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxEnableUnsol.Location = new System.Drawing.Point(20, 27);
+            this.checkBoxEnableUnsol.Location = new System.Drawing.Point(20, 25);
             this.checkBoxEnableUnsol.Name = "checkBoxEnableUnsol";
-            this.checkBoxEnableUnsol.Size = new System.Drawing.Size(144, 17);
+            this.checkBoxEnableUnsol.Size = new System.Drawing.Size(162, 16);
             this.checkBoxEnableUnsol.TabIndex = 0;
             this.checkBoxEnableUnsol.Text = "Enable Unsolicited Mode";
             this.checkBoxEnableUnsol.UseVisualStyleBackColor = true;
@@ -401,16 +414,19 @@ namespace Automatak.Simulator.DNP3.Components
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(550, 241);
+            this.tabPage3.Size = new System.Drawing.Size(904, 362);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Static Defaults";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
             // staticResponseTypeControl1
             // 
+            this.staticResponseTypeControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.staticResponseTypeControl1.Location = new System.Drawing.Point(6, 6);
             this.staticResponseTypeControl1.Name = "staticResponseTypeControl1";
-            this.staticResponseTypeControl1.Size = new System.Drawing.Size(260, 210);
+            this.staticResponseTypeControl1.Size = new System.Drawing.Size(892, 350);
             this.staticResponseTypeControl1.TabIndex = 1;
             // 
             // tabPage4
@@ -419,38 +435,45 @@ namespace Automatak.Simulator.DNP3.Components
             this.tabPage4.Location = new System.Drawing.Point(4, 22);
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage4.Size = new System.Drawing.Size(550, 241);
+            this.tabPage4.Size = new System.Drawing.Size(904, 362);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Event Defaults";
             this.tabPage4.UseVisualStyleBackColor = true;
             // 
             // eventResponseTypeControl1
             // 
+            this.eventResponseTypeControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.eventResponseTypeControl1.Location = new System.Drawing.Point(6, 6);
             this.eventResponseTypeControl1.Name = "eventResponseTypeControl1";
-            this.eventResponseTypeControl1.Size = new System.Drawing.Size(260, 210);
+            this.eventResponseTypeControl1.Size = new System.Drawing.Size(892, 350);
             this.eventResponseTypeControl1.TabIndex = 0;
             // 
             // groupBoxDatabase
             // 
+            this.groupBoxDatabase.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBoxDatabase.Controls.Add(this.buttonEdit);
             this.groupBoxDatabase.Controls.Add(this.buttonNew);
             this.groupBoxDatabase.Controls.Add(this.label9);
             this.groupBoxDatabase.Controls.Add(this.comboBoxTemplate);
-            this.groupBoxDatabase.Location = new System.Drawing.Point(12, 285);
+            this.groupBoxDatabase.Location = new System.Drawing.Point(12, 405);
             this.groupBoxDatabase.Name = "groupBoxDatabase";
-            this.groupBoxDatabase.Size = new System.Drawing.Size(558, 66);
+            this.groupBoxDatabase.Size = new System.Drawing.Size(912, 61);
             this.groupBoxDatabase.TabIndex = 8;
             this.groupBoxDatabase.TabStop = false;
             this.groupBoxDatabase.Text = "Database";
             // 
             // buttonEdit
             // 
+            this.buttonEdit.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.buttonEdit.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.buttonEdit.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonEdit.Location = new System.Drawing.Point(307, 17);
+            this.buttonEdit.Location = new System.Drawing.Point(307, 16);
             this.buttonEdit.Name = "buttonEdit";
-            this.buttonEdit.Size = new System.Drawing.Size(116, 42);
+            this.buttonEdit.Size = new System.Drawing.Size(116, 39);
             this.buttonEdit.TabIndex = 9;
             this.buttonEdit.Text = "Edit";
             this.buttonEdit.UseVisualStyleBackColor = true;
@@ -458,11 +481,13 @@ namespace Automatak.Simulator.DNP3.Components
             // 
             // buttonNew
             // 
+            this.buttonNew.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.buttonNew.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonNew.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonNew.Location = new System.Drawing.Point(429, 17);
+            this.buttonNew.Location = new System.Drawing.Point(429, 16);
             this.buttonNew.Name = "buttonNew";
-            this.buttonNew.Size = new System.Drawing.Size(116, 42);
+            this.buttonNew.Size = new System.Drawing.Size(116, 39);
             this.buttonNew.TabIndex = 8;
             this.buttonNew.Text = "New";
             this.buttonNew.UseVisualStyleBackColor = true;
@@ -471,33 +496,33 @@ namespace Automatak.Simulator.DNP3.Components
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(154, 32);
+            this.label9.Location = new System.Drawing.Point(154, 30);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(51, 13);
+            this.label9.Size = new System.Drawing.Size(53, 12);
             this.label9.TabIndex = 7;
             this.label9.Text = "Template";
             // 
             // comboBoxTemplate
             // 
+            this.comboBoxTemplate.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.comboBoxTemplate.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxTemplate.FormattingEnabled = true;
-            this.comboBoxTemplate.Location = new System.Drawing.Point(10, 29);
+            this.comboBoxTemplate.Location = new System.Drawing.Point(10, 27);
             this.comboBoxTemplate.Name = "comboBoxTemplate";
-            this.comboBoxTemplate.Size = new System.Drawing.Size(137, 21);
+            this.comboBoxTemplate.Size = new System.Drawing.Size(137, 20);
             this.comboBoxTemplate.TabIndex = 6;
             this.comboBoxTemplate.SelectedIndexChanged += new System.EventHandler(this.comboBoxTemplate_SelectedIndexChanged);
             // 
             // OutstationDialog
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(581, 454);
+            this.ClientSize = new System.Drawing.Size(935, 561);
             this.Controls.Add(this.groupBoxDatabase);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.groupBoxButtons);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "OutstationDialog";
             this.ShowIcon = false;

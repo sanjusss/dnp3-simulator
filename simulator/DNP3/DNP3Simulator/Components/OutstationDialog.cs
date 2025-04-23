@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Windows.Forms;
-
-using Automatak.DNP3.Interface;
+﻿using Automatak.DNP3.Interface;
 using Automatak.Simulator.DNP3.API;
+using System;
+using System.Data;
+using System.Linq;
+using System.Windows.Forms;
 
 namespace Automatak.Simulator.DNP3.Components
 {
@@ -27,7 +22,7 @@ namespace Automatak.Simulator.DNP3.Components
             this.allowTemplateEdit = module.AllowTemplateEditing;
             this.textBoxID.Text = module.DefaultLogName;
 
-            this.linkConfigControl.Configuration = initialConfig.link;            
+            this.linkConfigControl.Configuration = initialConfig.link;
 
             if (allowTemplateEdit)
             {
@@ -35,12 +30,17 @@ namespace Automatak.Simulator.DNP3.Components
             }
             else
             {
-                groupBoxDatabase.Enabled = false;   
+                groupBoxDatabase.Enabled = false;
+            }
+
+            using (var dialog = new TemplateDialog("defaultTemplate"))
+            {
+                ApplyTemplate(dialog);
             }
         }
 
         private void buttonADD_Click(object sender, EventArgs e)
-        {            
+        {
             this.DialogResult = DialogResult.OK;
             this.Close();
         }
@@ -75,10 +75,10 @@ namespace Automatak.Simulator.DNP3.Components
             {
                 var oc = new OutstationStackConfig();
                 oc.link = this.linkConfigControl.Configuration;
-                
+
                 oc.outstation.config = this.OutstationParameters;
-                oc.outstation.buffer = this.eventBufferConfigControl1.Configuration;                
-                            
+                oc.outstation.buffer = this.eventBufferConfigControl1.Configuration;
+
                 if (this.allowTemplateEdit)
                 {
                     var templateId = this.comboBoxTemplate.SelectedItem.ToString();
@@ -89,7 +89,7 @@ namespace Automatak.Simulator.DNP3.Components
                 {
                     oc.databaseTemplate = initialConfig.databaseTemplate;
                 }
-                
+
 
                 return oc;
             }
@@ -109,6 +109,8 @@ namespace Automatak.Simulator.DNP3.Components
                 this.buttonAdd.Enabled = true;
                 this.toolStripStatusLabel1.Text = "";
             }
+
+            DialogResult = DialogResult.None;
         }
 
         void OutstationDialog_Load(object sender, EventArgs e)
@@ -119,21 +121,13 @@ namespace Automatak.Simulator.DNP3.Components
         private void buttonNew_Click(object sender, EventArgs e)
         {
             using (var dialog = new TemplateDialog("template1", new DatabaseTemplate()))
-            {                
+            {
                 if (dialog.ShowDialog() == DialogResult.OK)
                 {
-                    var template = dialog.ConfiguredTemplate;
-
-                    // TODO - let the dialog config these internally
-                    this.staticResponseTypeControl1.Configure(template);
-                    this.eventResponseTypeControl1.Configure(template);
-
-
-                    config.AddTemplate(dialog.SelectedAlias, template);
-                    this.comboBoxTemplate.DataSource = config.Templates.Select(kvp => kvp.Key).ToList();                    
+                    ApplyTemplate(dialog);
                 }
             }
-        }       
+        }
 
         private void comboBoxTemplate_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -152,13 +146,22 @@ namespace Automatak.Simulator.DNP3.Components
                     dialog.ShowDialog();
                     if (dialog.DialogResult == DialogResult.OK)
                     {
-                        var template = dialog.ConfiguredTemplate;
-                        config.AddTemplate(dialog.SelectedAlias, template);
-                        this.comboBoxTemplate.DataSource = config.Templates.Select(kvp => kvp.Key).ToList();
+                        ApplyTemplate(dialog);
                     }
                 }
+
             }
-           
+
+            CheckState();
+        }
+
+        private void ApplyTemplate(TemplateDialog dialog)
+        {
+            DatabaseTemplate template = dialog.ConfiguredTemplate;
+            staticResponseTypeControl1.Configure(template);
+            eventResponseTypeControl1.Configure(template);
+            config.AddTemplate(dialog.SelectedAlias, template);
+            comboBoxTemplate.DataSource = config.Templates.Select(kvp => kvp.Key).ToList();
         }
     }
 }

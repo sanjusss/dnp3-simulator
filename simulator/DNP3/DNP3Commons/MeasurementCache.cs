@@ -1,17 +1,13 @@
-﻿using System;
+﻿using Automatak.DNP3.Interface;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.ComponentModel;
-
 using System.Threading;
-
-using Automatak.DNP3.Interface;
 
 namespace Automatak.Simulator.DNP3.Commons
 {
-       
-    public class MeasurementCache: ISOEHandler, IMeasurementCache, IDatabase, IMeasurementLoader
+
+    public class MeasurementCache : ISOEHandler, IMeasurementCache, IDatabase, IMeasurementLoader
     {
         readonly Object mutex = new Object();
 
@@ -24,18 +20,18 @@ namespace Automatak.Simulator.DNP3.Commons
         readonly MeasurementCollection analogOutputStatii = new MeasurementCollection();
         readonly MeasurementCollection octetStrings = new MeasurementCollection();
         readonly MeasurementCollection timeAndIntervals = new MeasurementCollection();
-        
+
         public MeasurementCache(DatabaseTemplate template)
-        {                        
+        {
             var values = new ChangeSet();
-            template.binaries.EachIndex((m, i) => values.Update(new Binary(Flags.RESTART), Convert.ToUInt16(i)));
-            template.doubleBinaries.EachIndex((m, i) => values.Update(new DoubleBitBinary(Flags.RESTART), Convert.ToUInt16(i)));                       
-            template.counters.EachIndex((m, i) => values.Update(new Counter(Flags.RESTART), Convert.ToUInt16(i)));
-            template.frozenCounters.EachIndex((m, i) => values.Update(new FrozenCounter(Flags.RESTART), Convert.ToUInt16(i)));
-            template.analogs.EachIndex((m, i) => values.Update(new Analog(Flags.RESTART), Convert.ToUInt16(i)));
-            template.binaryOutputStatii.EachIndex((m, i) => values.Update(new BinaryOutputStatus(Flags.RESTART), Convert.ToUInt16(i)));
-            template.analogOutputStatii.EachIndex((m, i) => values.Update(new AnalogOutputStatus(Flags.RESTART), Convert.ToUInt16(i)));                            
-            template.timeAndIntervals.EachIndex((m, i) => values.Update(new TimeAndInterval(0, 0, IntervalUnits.Undefined), Convert.ToUInt16(i)));
+            template.binaries.Each(r => values.Update(new Binary(Flags.RESTART), r.index));
+            template.doubleBinaries.Each(r => values.Update(new DoubleBitBinary(Flags.RESTART), r.index));
+            template.counters.Each(r => values.Update(new Counter(Flags.RESTART), r.index));
+            template.frozenCounters.Each(r => values.Update(new FrozenCounter(Flags.RESTART), r.index));
+            template.analogs.Each(r => values.Update(new Analog(Flags.RESTART), r.index));
+            template.binaryOutputStatii.Each(r => values.Update(new BinaryOutputStatus(Flags.RESTART), r.index));
+            template.analogOutputStatii.Each(r => values.Update(new AnalogOutputStatus(Flags.RESTART), r.index));
+            template.timeAndIntervals.Each(r => values.Update(new TimeAndInterval(0, 0, IntervalUnits.Undefined), r.index));
 
             this.Load(values);
         }
@@ -53,12 +49,12 @@ namespace Automatak.Simulator.DNP3.Commons
         void ISOEHandler.Start()
         {
             Monitor.Enter(mutex);
-        }      
-        
+        }
+
         void ISOEHandler.End()
         {
-            Monitor.Exit(mutex);          
-        }       
+            Monitor.Exit(mutex);
+        }
 
         MeasurementCollection GetCollectionMaybeNull(MeasType type)
         {
@@ -80,7 +76,7 @@ namespace Automatak.Simulator.DNP3.Commons
                     return analogOutputStatii;
                 case (MeasType.OctetString):
                     return octetStrings;
-                case(MeasType.TimeAndInterval):
+                case (MeasType.TimeAndInterval):
                     return timeAndIntervals;
                 default:
                     return null;
@@ -130,8 +126,8 @@ namespace Automatak.Simulator.DNP3.Commons
         public MeasurementCollection GetCollection(MeasType type)
         {
             switch (type)
-            { 
-                case(MeasType.Binary):
+            {
+                case (MeasType.Binary):
                     return binaries;
                 case (MeasType.DoubleBitBinary):
                     return doubleBinaries;
@@ -145,52 +141,52 @@ namespace Automatak.Simulator.DNP3.Commons
                     return binaryOutputStatii;
                 case (MeasType.AnalogOutputStatus):
                     return analogOutputStatii;
-                case(MeasType.OctetString):
+                case (MeasType.OctetString):
                     return octetStrings;
                 default:
                     return null;
             }
         }
-        
+
 
         void IDatabase.Update(Binary update, ushort index, EventMode mode)
         {
-            binaries.Update(update.ToMeasurement(index, TimestampMode.SYNCHRONIZED));            
+            binaries.Update(update.ToMeasurement(index, TimestampMode.SYNCHRONIZED));
         }
 
         void IDatabase.Update(DoubleBitBinary update, ushort index, EventMode mode)
         {
-            doubleBinaries.Update(update.ToMeasurement(index, TimestampMode.SYNCHRONIZED));            
+            doubleBinaries.Update(update.ToMeasurement(index, TimestampMode.SYNCHRONIZED));
         }
 
         void IDatabase.Update(Analog update, ushort index, EventMode mode)
         {
-            analogs.Update(update.ToMeasurement(index, TimestampMode.SYNCHRONIZED));            
+            analogs.Update(update.ToMeasurement(index, TimestampMode.SYNCHRONIZED));
         }
 
         void IDatabase.Update(Counter update, ushort index, EventMode mode)
         {
-            counters.Update(update.ToMeasurement(index, TimestampMode.SYNCHRONIZED));            
+            counters.Update(update.ToMeasurement(index, TimestampMode.SYNCHRONIZED));
         }
 
         void IDatabase.Update(FrozenCounter update, ushort index, EventMode mode)
         {
-            frozenCounters.Update(update.ToMeasurement(index, TimestampMode.SYNCHRONIZED));            
+            frozenCounters.Update(update.ToMeasurement(index, TimestampMode.SYNCHRONIZED));
         }
 
         void IDatabase.Update(BinaryOutputStatus update, ushort index, EventMode mode)
         {
-            binaryOutputStatii.Update(update.ToMeasurement(index, TimestampMode.SYNCHRONIZED));            
+            binaryOutputStatii.Update(update.ToMeasurement(index, TimestampMode.SYNCHRONIZED));
         }
 
         void IDatabase.Update(AnalogOutputStatus update, ushort index, EventMode mode)
         {
-            analogOutputStatii.Update(update.ToMeasurement(index, TimestampMode.SYNCHRONIZED));            
+            analogOutputStatii.Update(update.ToMeasurement(index, TimestampMode.SYNCHRONIZED));
         }
 
         void IDatabase.Update(TimeAndInterval update, ushort index)
         {
-            timeAndIntervals.Update(update.ToMeasurement(index, TimestampMode.SYNCHRONIZED));            
+            timeAndIntervals.Update(update.ToMeasurement(index, TimestampMode.SYNCHRONIZED));
         }
 
 

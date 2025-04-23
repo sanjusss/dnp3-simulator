@@ -1,64 +1,129 @@
-﻿using System;
+﻿using Automatak.DNP3.Interface;
+using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-
-using Automatak.DNP3.Interface;
 
 namespace Automatak.Simulator.DNP3.Components
 {
     public partial class TemplateControl : UserControl
     {
+        class Pair
+        {
+            public UInt16 first;
+            public UInt16 second;
+            public Pair(UInt16 first, UInt16 second)
+            {
+                this.first = first;
+                this.second = second;
+            }
+
+            public override string ToString()
+            {
+                if (first == second)
+                {
+                    return first.ToString();
+                }
+                else
+                {
+                    return $"{first}-{second}";
+                }
+            }
+
+            public static string ToString(IEnumerable<Pair> pairs)
+            {
+                return string.Join(";", pairs.Select(p => p.ToString()));
+            }
+
+            public static IEnumerable<Pair> Parse(string txt)
+            {
+                List<Pair> src = new List<Pair>();
+                List<Pair> des = new List<Pair>();
+                foreach (var single in txt.Split(';', ',', '|'))
+                {
+                    var parts = single.Split('-');
+                    if (parts.Length == 1)
+                    {
+                        if (UInt16.TryParse(parts[0], out UInt16 index))
+                        {
+                            src.Add(new Pair(index, index));
+                        }
+                    }
+                    else if (parts.Length == 2)
+                    {
+                        if (UInt16.TryParse(parts[0], out UInt16 first) && UInt16.TryParse(parts[1], out UInt16 second))
+                        {
+                            src.Add(new Pair(first, second));
+                        }
+                    }
+                }
+
+                foreach (var p in src.OrderBy(p => p.first))
+                {
+                    if (des.Count > 0 && (p.first == des.Last().first || des.Last().second == p.first + 1))
+                    {
+                        des.Last().second = Math.Max(des.Last().second, p.second);
+                    }
+                    else
+                    {
+                        des.Add(p);
+                    }
+                }
+
+                return des;
+            }
+        }
+
         public TemplateControl()
         {
             InitializeComponent();
-
-            this.CheckState();
+            Apply();
         }
-        
+
         public void SetRecords(IEnumerable<EventRecord> records)
         {
-            
-                this.SuspendLayout();                
-                this.listViewMeas.Items.Clear();
-                UInt16 index = 0;
-                foreach (var row in records)
-                {                                         
-                    listViewMeas.Items.Add(CreateItem(index, row.clazz));
-                    ++index;
+            SuspendLayout();
+            listViewMeas.SuspendLayout();
+            listViewMeas.BeginUpdate();
+            listViewMeas.Items.Clear();
+            textBoxRange.Text = string.Empty;
+            List<Pair> ranges = new List<Pair>();
+            foreach (var row in records.OrderBy(r => r.index))
+            {
+                listViewMeas.Items.Add(CreateItem(row.index, row.clazz));
+                if (ranges.Count > 0 && ranges.Last().second == row.index - 1)
+                {
+                    ranges[ranges.Count - 1].second = row.index;
                 }
-                this.numericUpDownCount.Value = index;
-                this.ResumeLayout();
+                else
+                {
+                    ranges.Add(new Pair(row.index, row.index));
+                }
+            }
+
+            textBoxRange.Text = Pair.ToString(ranges);
+            listViewMeas.EndUpdate();
+            listViewMeas.ResumeLayout();
+            ResumeLayout();
+            CheckState();
         }
 
         public IEnumerable<EventRecord> GetRecords()
         {
             var list = new List<EventRecord>();
-            ushort index = 0;
             foreach (ListViewItem item in listViewMeas.Items)
             {
-                var pc = (PointClass) Enum.Parse(typeof(PointClass), item.SubItems[1].Text);
+                var pc = (PointClass)Enum.Parse(typeof(PointClass), item.SubItems[1].Text);
+                UInt16 index = UInt16.Parse(item.SubItems[0].Text);
                 list.Add(new EventRecord(index, pc));
-                ++index;
             }
-            return list;            
+
+            return list;
         }
 
         void CheckState()
         {
-            if (listViewMeas.SelectedIndices.Count > 0)
-            {
-                this.buttonEdit.Enabled = true;
-            }
-            else
-            {
-                this.buttonEdit.Enabled = false;
-            }
+            buttonEdit.Enabled = listViewMeas.SelectedIndices.Count > 0;
         }
 
         private void listViewMeas_SelectedIndexChanged(object sender, EventArgs e)
@@ -85,44 +150,50 @@ namespace Automatak.Simulator.DNP3.Components
                         listViewMeas.ResumeLayout();
                     }
                 }
-            }            
+            }
         }
 
-        static ListViewItem CreateItem(int index, PointClass pc)
+        static ListViewItem CreateItem(UInt16 index, PointClass pc)
         {
             var strings = new String[] { index.ToString(), pc.ToString() };
             return new ListViewItem(strings);
         }
 
-        private void numericUpDownCount_ValueChanged(object sender, EventArgs e)
-        {
-            if (this.numericUpDownCount.Value > this.listViewMeas.Items.Count)
-            {
-                int number = Decimal.ToInt32(this.numericUpDownCount.Value) - this.listViewMeas.Items.Count;
-                int start = this.listViewMeas.Items.Count;                
-                listViewMeas.SuspendLayout();
-                for (int i = 0; i < number; ++i)
-                {
-                    listViewMeas.Items.Add(CreateItem(start, PointClass.Class1));
-                    ++start;
-                }
-                listViewMeas.ResumeLayout();
-            }
-            else                 
-            {
-                listViewMeas.SuspendLayout();
-                while (this.numericUpDownCount.Value < this.listViewMeas.Items.Count)
-                {
-                    this.listViewMeas.Items.RemoveAt(listViewMeas.Items.Count - 1);
-                }
-                listViewMeas.ResumeLayout();
-            }
-        }
-
         private void buttonClear_Click(object sender, EventArgs e)
         {
-            this.numericUpDownCount.Value = 0;
+            textBoxRange.Text = string.Empty;
+            listViewMeas.Items.Clear();
+            CheckState();
         }
-      
+
+        private void buttonApply_Click(object sender, EventArgs e)
+        {
+            Apply();
+        }
+
+        private void Apply()
+        {
+            Enabled = false;
+            var oldRds = GetRecords().ToDictionary(r => r.index);
+            var ranges = Pair.Parse(textBoxRange.Text).ToArray();
+            List<EventRecord> newRds = new List<EventRecord>();
+            foreach (var r in ranges)
+            {
+                for (UInt16 i = r.first; i <= r.second; i++)
+                {
+                    if (oldRds.ContainsKey(i))
+                    {
+                        newRds.Add(oldRds[i]);
+                    }
+                    else
+                    {
+                        newRds.Add(new EventRecord(i, PointClass.Class1));
+                    }
+                }
+            }
+
+            SetRecords(newRds);
+            Enabled = true;
+        }
     }
 }

@@ -1,17 +1,12 @@
-﻿using System;
+﻿using Automatak.DNP3.Interface;
+using Automatak.Simulator.DNP3.Commons;
+using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 
-using Automatak.DNP3.Interface;
-using Automatak.Simulator.DNP3.Commons;
-
 namespace Automatak.Simulator.DNP3.DefaultOutstationPlugin
-{    
+{
     partial class OutstationForm : Form
     {
         MeasurementCollection activeCollection = null;
@@ -20,7 +15,7 @@ namespace Automatak.Simulator.DNP3.DefaultOutstationPlugin
         readonly EventedOutstationApplication application;
         readonly MeasurementCache cache;
         readonly ProxyCommandHandler proxy;
-        readonly IMeasurementLoader loader;        
+        readonly IMeasurementLoader loader;
 
         readonly ChangeSet events = new ChangeSet();
 
@@ -58,8 +53,8 @@ namespace Automatak.Simulator.DNP3.DefaultOutstationPlugin
         {
             // simulate a restart with the restart IIN bit
             this.outstation.SetRestartIIN();
-        }       
-        
+        }
+
         void CheckState()
         {
             if (((MeasType)comboBoxTypes.SelectedValue) != MeasType.OctetString && this.measurementView.SelectedIndices.Any())
@@ -82,19 +77,19 @@ namespace Automatak.Simulator.DNP3.DefaultOutstationPlugin
                 this.buttonClear.Enabled = false;
             }
         }
-     
+
         void GUIMasterForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             e.Cancel = true;
             this.Hide();
-        }               
+        }
 
         void comboBoxTypes_SelectedIndexChanged(object sender, EventArgs e)
-        {        
+        {
             var index = this.comboBoxTypes.SelectedIndex;
-            if(Enum.IsDefined(typeof(MeasType), index))
+            if (Enum.IsDefined(typeof(MeasType), index))
             {
-                MeasType type = (MeasType) Enum.ToObject(typeof(MeasType), index);             
+                MeasType type = (MeasType)Enum.ToObject(typeof(MeasType), index);
                 var collection = cache.GetCollection(type);
                 if (collection != null)
                 {
@@ -106,18 +101,18 @@ namespace Automatak.Simulator.DNP3.DefaultOutstationPlugin
                     activeCollection = collection;
 
                     collection.AddObserver(this.measurementView);
-                }                
+                }
             }
-            this.CheckState(); 
-        }             
+            this.CheckState();
+        }
 
         private void buttonEdit_Click(object sender, EventArgs e)
         {
             var indices = this.measurementView.SelectedIndices;
 
-            switch ((MeasType) comboBoxTypes.SelectedValue)
-            { 
-                case(MeasType.Binary):
+            switch ((MeasType)comboBoxTypes.SelectedValue)
+            {
+                case (MeasType.Binary):
                     LoadBinaries(indices, true);
                     break;
                 case (MeasType.BinaryOutputStatus):
@@ -135,17 +130,17 @@ namespace Automatak.Simulator.DNP3.DefaultOutstationPlugin
                 case (MeasType.AnalogOutputStatus):
                     LoadAnalogs(indices, false);
                     break;
-                case(MeasType.DoubleBitBinary):
+                case (MeasType.DoubleBitBinary):
                     LoadDoubleBinaries(indices);
                     break;
-                
+
             }
         }
 
         void LoadBinaries(IEnumerable<ushort> indices, bool isBinary)
         {
             using (var dialog = new BinaryValueDialog(isBinary, indices))
-            {                
+            {
                 if (dialog.ShowDialog() == DialogResult.OK)
                 {
                     this.AddChanges(dialog.SelectedChanges);
@@ -156,7 +151,7 @@ namespace Automatak.Simulator.DNP3.DefaultOutstationPlugin
         void LoadDoubleBinaries(IEnumerable<ushort> indices)
         {
             using (var dialog = new DoubleBinaryValueDialog(indices))
-            {                
+            {
                 if (dialog.ShowDialog() == DialogResult.OK)
                 {
                     this.AddChanges(dialog.SelectedChanges);
@@ -167,7 +162,7 @@ namespace Automatak.Simulator.DNP3.DefaultOutstationPlugin
         void LoadAnalogs(IEnumerable<ushort> indices, bool isAnalog)
         {
             using (var dialog = new AnalogValueDialog(isAnalog, indices))
-            {                
+            {
                 if (dialog.ShowDialog() == DialogResult.OK)
                 {
                     this.AddChanges(dialog.SelectedChanges);
@@ -178,7 +173,7 @@ namespace Automatak.Simulator.DNP3.DefaultOutstationPlugin
         void LoadCounters(IEnumerable<ushort> indices, bool isCounter)
         {
             using (var dialog = new CounterValueDialog(isCounter, indices))
-            {                
+            {
                 if (dialog.ShowDialog() == DialogResult.OK)
                 {
                     this.AddChanges(dialog.SelectedChanges);
@@ -191,8 +186,8 @@ namespace Automatak.Simulator.DNP3.DefaultOutstationPlugin
             ListviewDatabaseAdapter.Process(changes, listBoxEvents);
 
             // merge these changes onto the main changeset
-            changes.Apply(events);                        
-            
+            changes.Apply(events);
+
             this.CheckState();
         }
 
@@ -202,12 +197,12 @@ namespace Automatak.Simulator.DNP3.DefaultOutstationPlugin
         }
 
         private void buttonApply_Click(object sender, EventArgs e)
-        {           
-           loader.Load(events);
-           events.Clear();           
-           
-           this.listBoxEvents.Items.Clear();           
-           this.CheckState();
+        {
+            loader.Load(events);
+            events.Clear();
+
+            this.listBoxEvents.Items.Clear();
+            this.CheckState();
         }
 
         private void buttonClear_Click(object sender, EventArgs e)
@@ -215,12 +210,12 @@ namespace Automatak.Simulator.DNP3.DefaultOutstationPlugin
             this.listBoxEvents.Items.Clear();
             this.events.Clear();
             this.CheckState();
-        }       
+        }
 
         private void checkBoxNeedTime_CheckedChanged(object sender, EventArgs e)
         {
             this.application.SupportsWriteTime = checkBoxNeedTime.Checked;
-            this.application.NeedTime = checkBoxNeedTime.Checked;                        
+            this.application.NeedTime = checkBoxNeedTime.Checked;
         }
 
         private void checkBoxLocalMode_CheckedChanged(object sender, EventArgs e)
@@ -230,12 +225,12 @@ namespace Automatak.Simulator.DNP3.DefaultOutstationPlugin
 
         private void comboBoxColdRestartMode_SelectedValueChanged(object sender, EventArgs e)
         {
-            this.application.ColdRestartMode = (RestartMode) comboBoxColdRestartMode.SelectedValue;
+            this.application.ColdRestartMode = (RestartMode)comboBoxColdRestartMode.SelectedValue;
         }
 
         private void numericUpDownColdRestartTime_ValueChanged(object sender, EventArgs e)
         {
             this.application.ColdRestartTime = Decimal.ToUInt16(numericUpDownColdRestartTime.Value);
-        }       
+        }
     }
 }
