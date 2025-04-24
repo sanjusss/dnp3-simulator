@@ -1,20 +1,15 @@
-﻿using System;
+﻿using Automatak.DNP3.Interface;
+using Automatak.Simulator.DNP3.Commons;
+using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
 using System.Data;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-
-using Automatak.DNP3.Interface;
-using Automatak.Simulator.DNP3.Commons;
 
 namespace Automatak.Simulator.DNP3.DefaultOutstationPlugin
 {
     partial class CommandHandlerControl : UserControl
-    {   
+    {
         ProxyCommandHandler handler = null;
         IMeasurementLoader loader = null;
 
@@ -23,6 +18,9 @@ namespace Automatak.Simulator.DNP3.DefaultOutstationPlugin
             InitializeComponent();
 
             this.comboBoxCode.DataSource = Enum.GetValues(typeof(CommandStatus));
+            this.comboBoxDefaultCode.DataSource = Enum.GetValues(typeof(CommandStatus));
+            this.comboBoxDefaultCode.SelectedItem = CommandStatus.SUCCESS;
+            this.comboBoxDefaultCode.SelectedValueChanged += comboBoxDefaultCode_SelectedValueChanged;
 
             var clearHandlers = new ToolStripMenuItem("Clear");
             this.contextMenuStripHandlers.Items.Add(clearHandlers);
@@ -50,6 +48,8 @@ namespace Automatak.Simulator.DNP3.DefaultOutstationPlugin
             this.loader = loader;
             this.handler.BinaryCommandAccepted += handler_BinaryCommandAccepted;
             this.handler.AnalogCommandAccepted += handler_AnalogCommandAccepted;
+            this.handler.DefaultStatus = (CommandStatus)this.comboBoxDefaultCode.SelectedItem;
+            this.handler.Enabled = true;
         }
 
         void handler_AnalogCommandAccepted(double value, ushort index)
@@ -66,7 +66,7 @@ namespace Automatak.Simulator.DNP3.DefaultOutstationPlugin
                 {
                     var changes = new ChangeSet();
                     changes.Update(new AnalogOutputStatus(value, 0x01, DateTime.Now), index);
-                    loader.Load(changes);                    
+                    loader.Load(changes);
                 }
             }
         }
@@ -126,7 +126,7 @@ namespace Automatak.Simulator.DNP3.DefaultOutstationPlugin
         {
             var changes = new ChangeSet();
             changes.Update(new BinaryOutputStatus(value, 0x01, timestamp), index);
-            loader.Load(changes);            
+            loader.Load(changes);
         }
 
         private void checkBoxEnabled_CheckedChanged(object sender, EventArgs e)
@@ -144,13 +144,13 @@ namespace Automatak.Simulator.DNP3.DefaultOutstationPlugin
             this.listBoxHandlers.SuspendLayout();
             this.listBoxHandlers.Items.Clear();
             this.listBoxHandlers.Items.AddRange(MakeHandlerStrings("BO", this.handler.BinaryResponses).ToArray());
-            this.listBoxHandlers.Items.AddRange(MakeHandlerStrings("AO", this.handler.AnalogResponses).ToArray());            
+            this.listBoxHandlers.Items.AddRange(MakeHandlerStrings("AO", this.handler.AnalogResponses).ToArray());
             this.listBoxHandlers.ResumeLayout();
-        }        
+        }
 
         private UInt16 SelectedIndex
         {
-            get 
+            get
             {
                 return Decimal.ToUInt16(numericUpDownIndex.Value);
             }
@@ -167,13 +167,23 @@ namespace Automatak.Simulator.DNP3.DefaultOutstationPlugin
         private void buttonAddBO_Click(object sender, EventArgs e)
         {
             this.handler.AddBinaryResponse(SelectedIndex, SelectedStatus);
-            this.RepopulateList();                       
+            this.RepopulateList();
         }
 
         private void buttonAddAO_Click(object sender, EventArgs e)
         {
             this.handler.AddAnalogResponse(SelectedIndex, SelectedStatus);
-            this.RepopulateList();                
+            this.RepopulateList();
+        }
+
+        private void comboBoxDefaultCode_SelectedValueChanged(object sender, EventArgs e)
+        {
+            if (handler == null)
+            {
+                return;
+            }
+
+            this.handler.DefaultStatus = (CommandStatus)this.comboBoxDefaultCode.SelectedItem;
         }
     }
 }

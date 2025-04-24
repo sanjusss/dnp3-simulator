@@ -1,15 +1,12 @@
-﻿using System;
+﻿using Automatak.DNP3.Interface;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-using Automatak.DNP3.Interface;
 
 namespace Automatak.Simulator.DNP3.Commons
 {
     public enum CommandType
-    { 
+    {
         CROB,
         AnalogInt16,
         AnalogInt32,
@@ -20,10 +17,11 @@ namespace Automatak.Simulator.DNP3.Commons
     public class ProxyCommandHandler : ICommandHandler
     {
         bool enabled = false;
-        Object mutex = new Object();        
+        Object mutex = new Object();
         IDictionary<UInt16, CommandStatus> binaryMap = new Dictionary<UInt16, CommandStatus>();
         IDictionary<UInt16, CommandStatus> analogMap = new Dictionary<UInt16, CommandStatus>();
         ICommandHandler proxy = RejectingCommandHandler.Instance;
+        CommandStatus? defaultStatus = null;
 
         public delegate void OnBinaryAccepted(ControlRelayOutputBlock crob, UInt16 index);
         public event OnBinaryAccepted BinaryCommandAccepted;
@@ -47,7 +45,7 @@ namespace Automatak.Simulator.DNP3.Commons
                     }
                 }
             }
-        }       
+        }
 
         public bool Enabled
         {
@@ -58,6 +56,24 @@ namespace Automatak.Simulator.DNP3.Commons
             set
             {
                 enabled = value;
+            }
+        }
+
+        public CommandStatus? DefaultStatus
+        {
+            get
+            {
+                lock (mutex)
+                {
+                    return defaultStatus;
+                }
+            }
+            set
+            {
+                lock (mutex)
+                {
+                    defaultStatus = value;
+                }
             }
         }
 
@@ -107,15 +123,19 @@ namespace Automatak.Simulator.DNP3.Commons
                 }
             }
         }
-       
+
         CommandStatus GetOrElse(ushort index, IDictionary<UInt16, CommandStatus> dictionary, Func<CommandStatus> action)
         {
             if (enabled)
             {
                 CommandStatus status;
                 if (dictionary.TryGetValue(index, out status))
-                {                    
+                {
                     return status;
+                }
+                else if (defaultStatus != null)
+                {
+                    return defaultStatus.Value;
                 }
                 else
                 {
@@ -125,7 +145,7 @@ namespace Automatak.Simulator.DNP3.Commons
             else
             {
                 return action.Invoke();
-            } 
+            }
         }
 
         CommandStatus GetOrElseAndLogBinary(ControlRelayOutputBlock command, ushort index, IDictionary<UInt16, CommandStatus> dictionary, Func<CommandStatus> action)
@@ -230,12 +250,12 @@ namespace Automatak.Simulator.DNP3.Commons
 
         void ICommandHandler.Start()
         {
-            
+
         }
 
         void ICommandHandler.End()
         {
-            
+
         }
     }
 }

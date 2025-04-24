@@ -45,21 +45,23 @@
             this.comboBoxCode = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.comboBoxDefaultCode = new System.Windows.Forms.ComboBox();
             this.groupBoxBehavior.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownIndex)).BeginInit();
             this.SuspendLayout();
             // 
             // listBoxLog
             // 
-            this.listBoxLog.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.listBoxLog.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.listBoxLog.ContextMenuStrip = this.contextMenuStripOperations;
             this.listBoxLog.FormattingEnabled = true;
             this.listBoxLog.ItemHeight = 12;
             this.listBoxLog.Location = new System.Drawing.Point(493, 36);
             this.listBoxLog.Name = "listBoxLog";
-            this.listBoxLog.Size = new System.Drawing.Size(445, 220);
+            this.listBoxLog.Size = new System.Drawing.Size(445, 244);
             this.listBoxLog.TabIndex = 2;
             // 
             // contextMenuStripOperations
@@ -74,7 +76,7 @@
             this.groupBoxBehavior.Controls.Add(this.checkBoxMapBinary);
             this.groupBoxBehavior.Location = new System.Drawing.Point(12, 12);
             this.groupBoxBehavior.Name = "groupBoxBehavior";
-            this.groupBoxBehavior.Size = new System.Drawing.Size(223, 244);
+            this.groupBoxBehavior.Size = new System.Drawing.Size(223, 267);
             this.groupBoxBehavior.TabIndex = 10;
             this.groupBoxBehavior.TabStop = false;
             this.groupBoxBehavior.Text = "Command Behavior";
@@ -82,6 +84,8 @@
             // checkBoxEnabled
             // 
             this.checkBoxEnabled.AutoSize = true;
+            this.checkBoxEnabled.Checked = true;
+            this.checkBoxEnabled.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBoxEnabled.Location = new System.Drawing.Point(21, 28);
             this.checkBoxEnabled.Name = "checkBoxEnabled";
             this.checkBoxEnabled.Size = new System.Drawing.Size(132, 16);
@@ -93,6 +97,8 @@
             // checkBoxMapAnalog
             // 
             this.checkBoxMapAnalog.AutoSize = true;
+            this.checkBoxMapAnalog.Checked = true;
+            this.checkBoxMapAnalog.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBoxMapAnalog.Location = new System.Drawing.Point(21, 55);
             this.checkBoxMapAnalog.Name = "checkBoxMapAnalog";
             this.checkBoxMapAnalog.Size = new System.Drawing.Size(138, 16);
@@ -103,6 +109,8 @@
             // checkBoxMapBinary
             // 
             this.checkBoxMapBinary.AutoSize = true;
+            this.checkBoxMapBinary.Checked = true;
+            this.checkBoxMapBinary.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBoxMapBinary.Location = new System.Drawing.Point(21, 84);
             this.checkBoxMapBinary.Name = "checkBoxMapBinary";
             this.checkBoxMapBinary.Size = new System.Drawing.Size(156, 16);
@@ -112,7 +120,7 @@
             // 
             // listBoxHandlers
             // 
-            this.listBoxHandlers.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.listBoxHandlers.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
             | System.Windows.Forms.AnchorStyles.Left)));
             this.listBoxHandlers.ContextMenuStrip = this.contextMenuStripHandlers;
             this.listBoxHandlers.FormattingEnabled = true;
@@ -130,7 +138,7 @@
             // buttonAddBO
             // 
             this.buttonAddBO.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.buttonAddBO.Location = new System.Drawing.Point(244, 220);
+            this.buttonAddBO.Location = new System.Drawing.Point(244, 240);
             this.buttonAddBO.Name = "buttonAddBO";
             this.buttonAddBO.Size = new System.Drawing.Size(109, 36);
             this.buttonAddBO.TabIndex = 12;
@@ -141,7 +149,7 @@
             // buttonAddAO
             // 
             this.buttonAddAO.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.buttonAddAO.Location = new System.Drawing.Point(367, 220);
+            this.buttonAddAO.Location = new System.Drawing.Point(367, 240);
             this.buttonAddAO.Name = "buttonAddAO";
             this.buttonAddAO.Size = new System.Drawing.Size(109, 36);
             this.buttonAddAO.TabIndex = 14;
@@ -153,7 +161,7 @@
             // 
             this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(383, 189);
+            this.label2.Location = new System.Drawing.Point(383, 209);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(35, 12);
             this.label2.TabIndex = 18;
@@ -162,7 +170,7 @@
             // numericUpDownIndex
             // 
             this.numericUpDownIndex.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.numericUpDownIndex.Location = new System.Drawing.Point(245, 187);
+            this.numericUpDownIndex.Location = new System.Drawing.Point(245, 207);
             this.numericUpDownIndex.Maximum = new decimal(new int[] {
             65535,
             0,
@@ -176,7 +184,7 @@
             // 
             this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(383, 165);
+            this.label1.Location = new System.Drawing.Point(383, 185);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(83, 12);
             this.label1.TabIndex = 16;
@@ -187,7 +195,7 @@
             this.comboBoxCode.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.comboBoxCode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxCode.FormattingEnabled = true;
-            this.comboBoxCode.Location = new System.Drawing.Point(244, 162);
+            this.comboBoxCode.Location = new System.Drawing.Point(244, 182);
             this.comboBoxCode.Name = "comboBoxCode";
             this.comboBoxCode.Size = new System.Drawing.Size(121, 20);
             this.comboBoxCode.TabIndex = 15;
@@ -210,10 +218,32 @@
             this.label4.TabIndex = 20;
             this.label4.Text = "Virtual Operations (any function code)";
             // 
+            // label5
+            // 
+            this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(383, 159);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(89, 12);
+            this.label5.TabIndex = 22;
+            this.label5.Text = "Default Status";
+            // 
+            // comboBoxDefaultCode
+            // 
+            this.comboBoxDefaultCode.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.comboBoxDefaultCode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxDefaultCode.FormattingEnabled = true;
+            this.comboBoxDefaultCode.Location = new System.Drawing.Point(244, 156);
+            this.comboBoxDefaultCode.Name = "comboBoxDefaultCode";
+            this.comboBoxDefaultCode.Size = new System.Drawing.Size(121, 20);
+            this.comboBoxDefaultCode.TabIndex = 21;
+            // 
             // CommandHandlerControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.comboBoxDefaultCode);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -253,5 +283,7 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ContextMenuStrip contextMenuStripHandlers;
         private System.Windows.Forms.ContextMenuStrip contextMenuStripOperations;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.ComboBox comboBoxDefaultCode;
     }
 }
