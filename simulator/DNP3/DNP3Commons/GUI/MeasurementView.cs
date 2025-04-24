@@ -1,14 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
 using System.Linq;
-using System.Text;
 using System.Windows.Forms;
-
-
-using Automatak.Simulator.DNP3.Commons;
 
 namespace Automatak.Simulator.DNP3.Commons
 {
@@ -16,6 +9,7 @@ namespace Automatak.Simulator.DNP3.Commons
     {
         MeasurementCollection collection = new MeasurementCollection();
         SortedDictionary<ushort, int> indexToRow = new SortedDictionary<ushort, int>();
+        Dictionary<int, ushort> rowToIndex = new Dictionary<int, ushort>();
 
         public delegate void RowSelectionEvent(IEnumerable<UInt16> rows);
 
@@ -24,8 +18,8 @@ namespace Automatak.Simulator.DNP3.Commons
         bool allowSelection = false;
 
         public MeasurementView()
-        {            
-            InitializeComponent();           
+        {
+            InitializeComponent();
         }
 
         public bool AllowSelection
@@ -54,11 +48,13 @@ namespace Automatak.Simulator.DNP3.Commons
                 this.listView.BeginUpdate();
                 this.listView.Items.Clear();
                 this.indexToRow.Clear();
+                this.rowToIndex.Clear();
                 int ri = 0;
                 foreach (var m in rows)
                 {
                     this.listView.Items.Add(CreateItem(m));
                     indexToRow[m.Index] = ri;
+                    rowToIndex[ri] = m.Index;
                     ++ri;
                 }
             }
@@ -76,28 +72,10 @@ namespace Automatak.Simulator.DNP3.Commons
                 this.listView.Items[row] = CreateItem(meas);
             }
             else
-            { 
-                // figure out where to insert
-                var entry = indexToRow.FirstOrDefault(kvp => kvp.Key > meas.Index);
-                if (entry.Equals(default(KeyValuePair<ushort, int>)))
-                {
-                    var row = listView.Items.Count;
-                    listView.Items.Add(CreateItem(meas));
-                    indexToRow[meas.Index] = row;
-                }
-                else
-                {
-                    listView.Items.Insert(entry.Value, CreateItem(meas));
-                    indexToRow[meas.Index] = entry.Value;
-                    var rows = indexToRow.Select(kvp => kvp.Key > meas.Index);
-                    foreach (var kvp in indexToRow)
-                    {
-                        if (kvp.Key > meas.Index)
-                        {
-                            indexToRow[kvp.Key] = kvp.Value + 1;                            
-                        }
-                    }
-                }
+            {
+                listView.Items.Add(CreateItem(meas));
+                indexToRow[meas.Index] = listView.Items.Count - 1;
+                rowToIndex[listView.Items.Count - 1] = meas.Index;
             }
         }
 
@@ -139,7 +117,7 @@ namespace Automatak.Simulator.DNP3.Commons
             {
                 foreach (int i in listView.SelectedIndices)
                 {
-                    yield return (ushort) i;
+                    yield return rowToIndex[i];
                 }
             }
         }
