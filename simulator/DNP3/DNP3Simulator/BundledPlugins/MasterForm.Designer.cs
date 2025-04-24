@@ -62,7 +62,9 @@
             // 
             // splitContainer1
             // 
-            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.splitContainer1.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
             this.splitContainer1.Location = new System.Drawing.Point(0, 0);
             this.splitContainer1.Name = "splitContainer1";
@@ -76,7 +78,7 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.measurementView);
-            this.splitContainer1.Size = new System.Drawing.Size(1048, 519);
+            this.splitContainer1.Size = new System.Drawing.Size(1069, 547);
             this.splitContainer1.SplitterDistance = 296;
             this.splitContainer1.TabIndex = 1;
             // 
@@ -90,30 +92,32 @@
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Controls.Add(this.tabPage4);
-            this.tabControl1.Location = new System.Drawing.Point(5, 32);
+            this.tabControl1.Location = new System.Drawing.Point(5, 30);
             this.tabControl1.Multiline = true;
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(286, 478);
+            this.tabControl1.Size = new System.Drawing.Size(286, 509);
             this.tabControl1.TabIndex = 3;
             // 
             // tabPage1
             // 
             this.tabPage1.Controls.Add(this.masterScanControl1);
-            this.tabPage1.Location = new System.Drawing.Point(23, 4);
+            this.tabPage1.Location = new System.Drawing.Point(22, 4);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(259, 470);
+            this.tabPage1.Size = new System.Drawing.Size(260, 501);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Scans";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
             // masterScanControl1
             // 
-            this.masterScanControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.masterScanControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.masterScanControl1.Location = new System.Drawing.Point(3, 3);
             this.masterScanControl1.Name = "masterScanControl1";
-            this.masterScanControl1.Size = new System.Drawing.Size(253, 464);
+            this.masterScanControl1.Size = new System.Drawing.Size(254, 428);
             this.masterScanControl1.TabIndex = 2;
             // 
             // tabPage2
@@ -121,26 +125,26 @@
             this.tabPage2.Controls.Add(this.crobControl);
             this.tabPage2.Controls.Add(this.buttonSelectOperate);
             this.tabPage2.Controls.Add(this.buttonDirectOperate);
-            this.tabPage2.Location = new System.Drawing.Point(23, 4);
+            this.tabPage2.Location = new System.Drawing.Point(22, 4);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(259, 470);
+            this.tabPage2.Size = new System.Drawing.Size(260, 501);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "CROB";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
             // crobControl
             // 
-            this.crobControl.Location = new System.Drawing.Point(17, 19);
+            this.crobControl.Location = new System.Drawing.Point(17, 18);
             this.crobControl.Name = "crobControl";
-            this.crobControl.Size = new System.Drawing.Size(225, 224);
+            this.crobControl.Size = new System.Drawing.Size(225, 207);
             this.crobControl.TabIndex = 3;
             // 
             // buttonSelectOperate
             // 
-            this.buttonSelectOperate.Location = new System.Drawing.Point(138, 258);
+            this.buttonSelectOperate.Location = new System.Drawing.Point(138, 238);
             this.buttonSelectOperate.Name = "buttonSelectOperate";
-            this.buttonSelectOperate.Size = new System.Drawing.Size(104, 47);
+            this.buttonSelectOperate.Size = new System.Drawing.Size(104, 43);
             this.buttonSelectOperate.TabIndex = 2;
             this.buttonSelectOperate.Text = "Select and Operate";
             this.buttonSelectOperate.UseVisualStyleBackColor = true;
@@ -148,9 +152,9 @@
             // 
             // buttonDirectOperate
             // 
-            this.buttonDirectOperate.Location = new System.Drawing.Point(17, 258);
+            this.buttonDirectOperate.Location = new System.Drawing.Point(17, 238);
             this.buttonDirectOperate.Name = "buttonDirectOperate";
-            this.buttonDirectOperate.Size = new System.Drawing.Size(95, 47);
+            this.buttonDirectOperate.Size = new System.Drawing.Size(95, 43);
             this.buttonDirectOperate.TabIndex = 1;
             this.buttonDirectOperate.Text = "Direct Operate";
             this.buttonDirectOperate.UseVisualStyleBackColor = true;
@@ -161,26 +165,26 @@
             this.tabPage3.Controls.Add(this.analogOutputControl);
             this.tabPage3.Controls.Add(this.buttonSBOAO);
             this.tabPage3.Controls.Add(this.buttonDOAO);
-            this.tabPage3.Location = new System.Drawing.Point(23, 4);
+            this.tabPage3.Location = new System.Drawing.Point(22, 4);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(259, 470);
+            this.tabPage3.Size = new System.Drawing.Size(260, 501);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "AO";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
             // analogOutputControl
             // 
-            this.analogOutputControl.Location = new System.Drawing.Point(18, 20);
+            this.analogOutputControl.Location = new System.Drawing.Point(18, 18);
             this.analogOutputControl.Name = "analogOutputControl";
-            this.analogOutputControl.Size = new System.Drawing.Size(225, 165);
+            this.analogOutputControl.Size = new System.Drawing.Size(225, 152);
             this.analogOutputControl.TabIndex = 7;
             // 
             // buttonSBOAO
             // 
-            this.buttonSBOAO.Location = new System.Drawing.Point(139, 205);
+            this.buttonSBOAO.Location = new System.Drawing.Point(139, 189);
             this.buttonSBOAO.Name = "buttonSBOAO";
-            this.buttonSBOAO.Size = new System.Drawing.Size(104, 47);
+            this.buttonSBOAO.Size = new System.Drawing.Size(104, 43);
             this.buttonSBOAO.TabIndex = 6;
             this.buttonSBOAO.Text = "Select and Operate";
             this.buttonSBOAO.UseVisualStyleBackColor = true;
@@ -188,9 +192,9 @@
             // 
             // buttonDOAO
             // 
-            this.buttonDOAO.Location = new System.Drawing.Point(18, 205);
+            this.buttonDOAO.Location = new System.Drawing.Point(18, 189);
             this.buttonDOAO.Name = "buttonDOAO";
-            this.buttonDOAO.Size = new System.Drawing.Size(95, 47);
+            this.buttonDOAO.Size = new System.Drawing.Size(95, 43);
             this.buttonDOAO.TabIndex = 5;
             this.buttonDOAO.Text = "Direct Operate";
             this.buttonDOAO.UseVisualStyleBackColor = true;
@@ -200,10 +204,10 @@
             // 
             this.tabPage4.Controls.Add(this.comboBoxFunctionCode);
             this.tabPage4.Controls.Add(this.buttonSendFunction);
-            this.tabPage4.Location = new System.Drawing.Point(23, 4);
+            this.tabPage4.Location = new System.Drawing.Point(22, 4);
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage4.Size = new System.Drawing.Size(259, 470);
+            this.tabPage4.Size = new System.Drawing.Size(260, 501);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Custom";
             this.tabPage4.UseVisualStyleBackColor = true;
@@ -212,16 +216,16 @@
             // 
             this.comboBoxFunctionCode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxFunctionCode.FormattingEnabled = true;
-            this.comboBoxFunctionCode.Location = new System.Drawing.Point(26, 29);
+            this.comboBoxFunctionCode.Location = new System.Drawing.Point(26, 27);
             this.comboBoxFunctionCode.Name = "comboBoxFunctionCode";
-            this.comboBoxFunctionCode.Size = new System.Drawing.Size(203, 21);
+            this.comboBoxFunctionCode.Size = new System.Drawing.Size(203, 20);
             this.comboBoxFunctionCode.TabIndex = 8;
             // 
             // buttonSendFunction
             // 
-            this.buttonSendFunction.Location = new System.Drawing.Point(26, 83);
+            this.buttonSendFunction.Location = new System.Drawing.Point(26, 77);
             this.buttonSendFunction.Name = "buttonSendFunction";
-            this.buttonSendFunction.Size = new System.Drawing.Size(203, 47);
+            this.buttonSendFunction.Size = new System.Drawing.Size(203, 43);
             this.buttonSendFunction.TabIndex = 7;
             this.buttonSendFunction.Text = "Send";
             this.buttonSendFunction.UseVisualStyleBackColor = true;
@@ -234,26 +238,28 @@
             this.comboBoxTypes.FormattingEnabled = true;
             this.comboBoxTypes.Location = new System.Drawing.Point(5, 5);
             this.comboBoxTypes.Name = "comboBoxTypes";
-            this.comboBoxTypes.Size = new System.Drawing.Size(286, 21);
+            this.comboBoxTypes.Size = new System.Drawing.Size(286, 20);
             this.comboBoxTypes.TabIndex = 0;
             this.comboBoxTypes.SelectedIndexChanged += new System.EventHandler(this.comboBoxTypes_SelectedIndexChanged);
             // 
             // measurementView
             // 
             this.measurementView.AllowSelection = false;
-            this.measurementView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.measurementView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.measurementView.Location = new System.Drawing.Point(0, 0);
             this.measurementView.Name = "measurementView";
-            this.measurementView.Size = new System.Drawing.Size(748, 519);
+            this.measurementView.Size = new System.Drawing.Size(766, 544);
             this.measurementView.TabIndex = 2;
             // 
             // statusStrip1
             // 
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusLabel});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 497);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 550);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(1048, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(1069, 22);
             this.statusStrip1.TabIndex = 5;
             this.statusStrip1.Text = "statusStrip";
             // 
@@ -264,9 +270,9 @@
             // 
             // MasterForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1048, 519);
+            this.ClientSize = new System.Drawing.Size(1069, 572);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.splitContainer1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
