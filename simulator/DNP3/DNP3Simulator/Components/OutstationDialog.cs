@@ -41,6 +41,14 @@ namespace Automatak.Simulator.DNP3.Components
 
         private void buttonADD_Click(object sender, EventArgs e)
         {
+            var templateId = this.comboBoxTemplate.SelectedItem.ToString();
+            var template = config.GetTemplateMaybeNull(templateId);
+            if (template != null)
+            {
+                staticResponseTypeControl1.Configure(template);
+                eventResponseTypeControl1.Configure(template);
+            }
+
             this.DialogResult = DialogResult.OK;
             this.Close();
         }
